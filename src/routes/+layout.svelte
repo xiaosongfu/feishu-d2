@@ -1,16 +1,17 @@
 <script lang="ts">
 	import "$lib/styles/global.css";
 	import SettingsModal from "$lib/components/SettingsModal.svelte";
+	import ThemeToggle from "$lib/components/ThemeToggle.svelte";
 
 	let { children } = $props();
 	let settingsOpen = $state(false);
 </script>
 
 <svelte:head>
-	<title>飞书数据导航器</title>
+	<title>D2</title>
 	<meta
 		name="description"
-		content="飞书多维表格数据导航器 - 优雅的项目管理界面"
+		content="project list and open tool for developers"
 	/>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link
@@ -25,6 +26,9 @@
 </svelte:head>
 
 {@render children()}
+
+<!-- Theme Toggle -->
+<ThemeToggle />
 
 <!-- Settings Button -->
 <button

@@ -29,10 +29,7 @@
 
 <div class="container">
     <div class="header">
-        <h1>飞书数据导航器</h1>
-        <p style="color: var(--text-secondary); font-size: 1.1rem;">
-            选择公司查看项目详情
-        </p>
+        <h1>D2</h1>
     </div>
 
     {#if loading}
