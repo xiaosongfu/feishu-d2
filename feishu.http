@@ -1,0 +1,117 @@
+# 获取 tenant_access_token
+POST https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal
+Content-Type: application/json; charset=utf-8
+
+{
+    "app_id": "xxx",
+    "app_secret": "xxx"
+}
+
+// {
+//   "code": 0,
+//   "expire": 5609,
+//   "msg": "ok",
+//   "tenant_access_token": "t-g104bu9sVZGUZXLPIN5XTWLH34F3TV4AGIHRWGQN"
+// }
+
+#
+POST  https://open.feishu.cn/open-apis/bitable/v1/apps/Q8jrbq5zwaCByTsmNdnctTjenMc/tables/tblODn61SEpnTQLB/records/search
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer t-g104bu9sVZGUZXLPIN5XTWLH34F3TV4AGIHRWGQN
+
+{
+    "field_names": [
+        "公司"
+    ],
+    "sort": [
+        {
+            "desc": false,
+            "field_name": "排序"
+        }
+    ]
+}
+
+// {
+//   "code": 0,
+//   "data": {
+//     "has_more": false,
+//     "items": [
+//       {
+//         "fields": {
+//           "公司": "xs",
+//           "序号": "1",
+//           "排序": 100,
+//           "端仓库链接": {
+//             "link": "https://github.com/xiaosongfu/easyfaucet-contracts",
+//             "text": "https://github.com/xiaosongfu/easyfaucet-contracts",
+//             "type": "url"
+//           },
+//           "端关联应用": [
+//             "Zed",
+//             "WebStorm"
+//           ],
+//           "端名称": [
+//             {
+//               "text": "easyfaucet-contracts",
+//               "type": "text"
+//             }
+//           ],
+//           "端本地路径": [
+//             {
+//               "text": "dev/code/xs/easyfaucet/easyfaucet-contracts",
+//               "type": "text"
+//             }
+//           ],
+//           "项目": "01_easyfaucet"
+//         },
+//         "record_id": "recg7HYLzq"
+//       }
+//     ],
+//     "total": 1
+//   },
+//   "msg": "success"
+// }
+
+# 查询记录 -- 不支持 field_names 参数
+GET  https://open.feishu.cn/open-apis/bitable/v1/apps/Q8jrbq5zwaCByTsmNdnctTjenMc/tables/tblODn61SEpnTQLB/records
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer t-g104bu9sVZGUZXLPIN5XTWLH34F3TV4AGIHRWGQN
+
+{
+    "sort": [
+        {
+            "desc": false,
+            "field_name": "排序"
+        }
+    ]
+}
+
+// {
+//   "code": 0,
+//   "data": {
+//     "has_more": false,
+//     "items": [
+//       {
+//         "fields": {
+//           "公司": "xs",
+//           "序号": "1",
+//           "排序": "100",
+//           "端仓库链接": {
+//             "link": "https://github.com/xiaosongfu/easyfaucet-contracts",
+//             "text": "https://github.com/xiaosongfu/easyfaucet-contracts"
+//           },
+//           "端关联应用": [
+//             "Zed",
+//             "WebStorm"
+//           ],
+//           "端名称": "easyfaucet-contracts",
+//           "端本地路径": "dev/code/xs/easyfaucet/easyfaucet-contracts",
+//           "项目": "01_easyfaucet"
+//         },
+//         "id": "recg7HYLzq",
+//         "record_id": "recg7HYLzq"
+//       }
+//     "total": 1
+//   },
+//   "msg": "success"
+// }

@@ -101,7 +101,7 @@ export async function getTableRecords(): Promise<FeishuRecord[]> {
     try {
         while (hasMore) {
             const url = new URL(
-                `${FEISHU_API_ENDPOINT}/open-apis/bitable/v1/apps/${FEISHU_TABLE_APP_TOKEN}/tables/${FEISHU_TABLE_ID}/records`
+                `${FEISHU_API_ENDPOINT}/open-apis/bitable/v1/apps/${FEISHU_TABLE_APP_TOKEN}/tables/${FEISHU_TABLE_ID}/records/search`
             );
 
             // Add pagination parameters
@@ -111,11 +111,19 @@ export async function getTableRecords(): Promise<FeishuRecord[]> {
             }
 
             const response = await fetch(url.toString(), {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({
+                    "sort": [
+                        {
+                            "desc": false,
+                            "field_name": "排序"
+                        }
+                    ]
+                })
             });
 
             const data: FeishuTableResponse = await response.json();
